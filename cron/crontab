@@ -22,3 +22,4 @@ SHELL=/bin/sh
 52 6	1 * *	root	test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.monthly; }
 #
 0 0 * * * root mysqldump -u root -p"1234456Aa" --all-databaases > /var/backups/mysql/mysql_backup_$(date +\%F_\%H-%M-%S).sql
+0 0 1 * * root /bin/bash /var/local/scripts/backup_cms.sh
