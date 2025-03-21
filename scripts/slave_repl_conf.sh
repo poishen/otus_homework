@@ -2,7 +2,7 @@
 
 GIT_REPO="https://github.com/poishen/otus_homework.git"
 CLONE_DIR="/var/local/repo/"
-MASTER_HOST=""
+read -p "Введите ip адрес mysql master " MASTER_HOST
 MASTER_USER="replica"             # Репликационный пользователь на master
 MASTER_PASSWORD="123456Aa"     # Пароль для репликационного пользователя
 
