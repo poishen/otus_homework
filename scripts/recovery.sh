@@ -11,7 +11,7 @@ DB_PASS="123456Aa"
 echo "Созданиие директорий"
 sudo mkdir /var/local/repo
 
-sudo mkdir /var/www/html/wordpress
+
 echo "Обновление пакетов"
 sudo apt update && sudo apt upgrade -y
 
@@ -36,7 +36,7 @@ echo "Копирование конфигов apache2..."
 sudo cp /var/local/repo/apache2/wordpress2.conf /etc/apache2/sites-available/wordpress2.conf
 sudo  a2dissite 000-default.conf
 sudo a2ensite wordpress*
-sudo cp /var/local/repo/apache2/port.conf /etc/apache2/ports.conf
+sudo cp /var/local/repo/apache2/ports.conf /etc/apache2/ports.conf
 echo "Копирование конфигов nginx"
 sudo cp /var/local/repo/nginx/default /etc/nginx/sites-available/default
 
@@ -48,6 +48,8 @@ sudo cp /var/local/repo/cron/crontab /etc/crontab
 echo "Восстановление базы данных"
 sudo mysql < /var/local/repo/backups/backup_mysql.sql
 echo "Востановление файлов  cms"
+sudo mkdir /var/www/html
+sudo mkdir /var/www/html/wordpress
 sudo tar -xzf /var/local/repo/backups/wp_backup.tar.gz -C /var/local/repo/backups/
 sudo cp -r /var/local/repo/backups/var/www/html/wordpress/* /var/www/html/wordpress/
 echo "Настройка прав для папок сайта"
