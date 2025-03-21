@@ -37,6 +37,7 @@ sudo cp /var/local/repo/apache2/wordpress2.conf /etc/apache2/sites-available/wor
 sudo  a2dissite 000-default.conf
 sudo a2ensite wordpress*
 sudo cp /var/local/repo/apache2/ports.conf /etc/apache2/ports.conf
+sudo systemctl restart apache2
 echo "Копирование конфигов nginx"
 sudo cp /var/local/repo/nginx/default /etc/nginx/sites-available/default
 
