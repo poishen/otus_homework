@@ -28,17 +28,17 @@ if [ "$choice" = "1" ]; then
   echo "1 — выполняется восстановление мастера"
 
 echo "Копирование конфигов mysql_master"
-sudo cp /var/local/repo/mysql/mysqld_master.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
+sudo cp $CLONE_DIR/mysqld_master.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
 
 elif [ "$choice" = "2" ]; then
   echo "2 — выполняется восстановление слейва"
-  sudo cp /var/local/repo/mysql_slave/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
+  sudo cp $CLONE_DIR/mysql_slave/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
 else
   echo "Неверный выбор"
 fi
 
 echo "Восстановление базы данных"
-sudo mysql < /var/local/repo/backups/backup_mysql.sql
+sudo mysql < $CLONE_DIR/backups/backup_mysql.sql
 
 sudo systemctl restart mysql.service
 
