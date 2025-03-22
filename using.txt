@@ -1,0 +1,7 @@
+1 change /etc/hosts to adding ip of slave
+2 run mysql_restore.sh to master and slave
+3  run recovery.sh on master
+4 run change_ips_for_CMS.sh on master
+5 run prometheus_and_grafana.sh on slave and configure it (add master ip with port 9100 to prometheus.yml)
+
+
