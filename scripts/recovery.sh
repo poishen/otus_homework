@@ -18,7 +18,7 @@ sudo apt update && sudo apt upgrade -y
 # Установка Apache2 и Nginx
 
 echo "Установка необходимых пакетов"
-sudo apt install -y apache2 nginx php php-mysql libapache2-mod-php php-cli php-cgi php-gd unzip
+sudo apt install -y apache2 nginx php php-mysql libapache2-mod-php php-cli php-cgi php-gd unzip prometheus-node-exporter
 
 echo "Добавление в автозагрузку"
 sudo systemctl enable --now apache2 mysql nginx
