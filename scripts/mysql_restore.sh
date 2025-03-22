@@ -22,15 +22,15 @@ echo "Скачивание репозитория"
 sudo git clone --branch master "$GIT_REPO" "$CLONE_DIR"
 
 
-read -p "Выберите опцию (1 мастер или 2 слейв): " choice
+read -p "Выберите опцию (1 мастер или 2 слейв):" choice
 
-if [ "$choice" == "1" ]; then
+if [ "$choice" = "1" ]; then
   echo "1 — выполняется восстановление мастера"
 
 echo "Копирование конфигов mysql_master"
 sudo cp /var/local/repo/mysql/mysqld_master.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
 
-elif [ "$choice" == "2" ]; then
+elif [ "$choice" = "2" ]; then
   echo "2 — выполняется восстановление слейва"
   sudo cp /var/local/repo/mysql_slave/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
 else
@@ -42,16 +42,16 @@ sudo mysql < /var/local/repo/backups/backup_mysql.sql
 
 sudo systemctl restart mysql.service
 
-read -p "Выберите опцию (1 мастер или 2 слейв): " choice
+read -p "Выберите опцию (1 мастер или 2 слейв):" choice
 
-if [ "$choice" == "1" ]; then
+if [ "$choice" = "1" ]; then
   echo "1 - выполняется конфигурация репликации на мастере"
   sudo mysql -e "
 ALTER USER 'replica'@'%' IDENTIFIED WITH 'caching_sha2_password' BY '123456Aa';
 SET @@GLOBAL.read_only = ON;
 "
 
-elif [ "$choice" == "2" ]; then
+elif [ "$choice" = "2" ]; then
   echo "2 -  - выполняется конфигурация репликации на слейве"
   sudo mysql -e "
 SET @@GLOBAL.read_only = ON;
