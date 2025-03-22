@@ -45,8 +45,7 @@ sudo cp /var/local/repo/nginx/nginx.conf /etc/nginx/nginx.conf
 
 echo "Копирование crontab"
 sudo cp /var/local/repo/cron/crontab /etc/crontab
-echo "Восстановление базы данных"
-sudo mysql < /var/local/repo/backups/backup_mysql.sql
+
 echo "Востановление файлов  cms"
 sudo mkdir /var/www/html
 sudo mkdir /var/www/html/wordpress
@@ -55,7 +54,7 @@ sudo cp -r /var/local/repo/backups/var/www/html/wordpress/* /var/www/html/wordpr
 echo "Настройка прав для папок сайта"
 sudo chown -R www-data:www-data /var/www/html/wordpress
 sudo chmod -R 755 /var/www/html/wordpress
-
+sudo mysql -e "SET @@GLOBAL.read_only = OFF;"
 sudo systemctl restart --now apache2 nginx
 echo "Все готово, не забудь внести изменения в файл hosts для подключения mysql-slave"
  
