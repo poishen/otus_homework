@@ -1,7 +1,7 @@
 #!/bin/bash
 
 GIT_REPO="https://github.com/poishen/otus_homework.git"
-CLONE_DIR="/var/local/repo_mysql/"
+CLONE_DIR="/var/local/repo_mysql"
 DB_NAME="MYBASE"
 DB_USER="user"
 DB_PASS="123456Aa"
