@@ -18,7 +18,7 @@ sudo apt update && sudo apt upgrade -y
 # Установка Apache2 и Nginx
 
 echo "Установка необходимых пакетов"
-sudo apt install -y apache2 nginx mysql-server php php-mysql libapache2-mod-php php-cli php-cgi php-gd unzip
+sudo apt install -y apache2 nginx php php-mysql libapache2-mod-php php-cli php-cgi php-gd unzip
 
 echo "Добавление в автозагрузку"
 sudo systemctl enable --now apache2 mysql nginx
@@ -42,8 +42,7 @@ echo "Копирование конфигов nginx"
 sudo cp /var/local/repo/nginx/default /etc/nginx/sites-available/default
 
 sudo cp /var/local/repo/nginx/nginx.conf /etc/nginx/nginx.conf
-echo "Копирование конфигов mysql"
-sudo cp /var/local/repo/mysql/mysqld_master.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
+
 echo "Копирование crontab"
 sudo cp /var/local/repo/cron/crontab /etc/crontab
 echo "Восстановление базы данных"
@@ -57,6 +56,6 @@ echo "Настройка прав для папок сайта"
 sudo chown -R www-data:www-data /var/www/html/wordpress
 sudo chmod -R 755 /var/www/html/wordpress
 
-sudo systemctl restart --now apache2 mysql nginx
+sudo systemctl restart --now apache2 nginx
 echo "Все готово, не забудь внести изменения в файл hosts для подключения mysql-slave"
  
